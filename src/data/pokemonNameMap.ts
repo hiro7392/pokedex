@@ -2,6 +2,19 @@ export function toLowerCase<T extends string>(str:T) {
   type Mapped =Lowercase<T>
   return str.toLowerCase() as Mapped
 }
+
+export function toCapitalize(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+
+
+
+export const toJapaneseName = (enName: string | undefined) => {
+
+  const names= pokemonNameMap.find(({ en }) => en === enName);
+  return names?.ja ?? ""
+}
 export const pokemonNameMap=[
   {
     ja: "フシギダネ",
