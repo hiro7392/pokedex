@@ -27,10 +27,10 @@ type PokemonInfo={
 }
 
 export const Pokemon = () => {
-  const [count,setCount] =useState<number>(0);
+  const [count,setCount] =useState<number>(1);
   const [pokemonInfo,setPokemonInfo]=useState<PokemonInfo>();
-  const {data:pokemonData} = useSWR(toLowerCase(pokemonNameMap[count].en), () =>
-  api.pokemon.getPokemonByName(toLowerCase(pokemonNameMap[count].en))
+  const {data:pokemonData} = useSWR(toLowerCase(pokemonNameMap[count-1].en), () =>
+  api.pokemon.getPokemonByName(toLowerCase(pokemonNameMap[count-1].en))
   );
   // const [types,setTypes]=useState<pokemonType>({type1:"none",type2:"none"});
   const api = new MainClient();
@@ -58,7 +58,7 @@ export const Pokemon = () => {
         </div>
         <div style={{minHeight:"30px"}}>
         <h3 style={{minHeight:"10px"}}>
-          <p>No.{count+1}</p>
+          <p>No.{count}</p>
         </h3>
         <h2 style={{minHeight:"40px"}}>
           {pokemonInfo?.name.ja}
