@@ -67,13 +67,13 @@ export const Pokemon = () => {
       </div>
       </div>
       </Suspense>
+      <NumberForm setNumber={setCount} num={count}/>
       <ChangePokemonPageButton 
         count={count}
         length={pokemonNameMap.length}
         onClickIncrement={()=>setCount((count)=>count+1)}
         onClickDecrement={()=>setCount((count)=>count-1)}
       />
-      <NumberForm setNumber={setCount} num={count}/>
     </>
   );
 };
