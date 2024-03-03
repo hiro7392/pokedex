@@ -8,16 +8,16 @@ import {
   toLowerCase,
 } from "../data/pokemonNameMap";
 import { toJapaneseType } from "../data/pokemonTypeMap";
-import { NumberForm } from "./moleucules/NumberForm";
-import { ChangePokemonPageButton } from "./moleucules/ChangePokemonPageButton";
-import { PokemonInfo } from "../domain/pokemon";
-import { PokemonInfoCard } from "./moleucules/PokeInfoCard";
+import { ChangePokemonPageButton } from "./molecules/ChangePokemonPageButton";
+import { PokemonInfo } from "../domain/Pokemon";
+import { PokemonInfoCard } from "./molecules/PokeInfoCard";
+import { NumberForm } from "./molecules/molecules";
 
 function Loading() {
   return <h2>🌀 Loading...</h2>;
 }
 
-export const Pokemon = () => {
+export const PokemonDex = () => {
   const [count, setCount] = useState<number>(1);
   const [pokemonInfo, setPokemonInfo] = useState<PokemonInfo>();
   const { data: pokemonData } = useSWR(
@@ -25,7 +25,6 @@ export const Pokemon = () => {
     () =>
       api.pokemon.getPokemonByName(toLowerCase(pokemonNameMap[count - 1].en)),
   );
-  // const [types,setTypes]=useState<pokemonType>({type1:"none",type2:"none"});
   const api = new MainClient();
 
   useEffect(() => {

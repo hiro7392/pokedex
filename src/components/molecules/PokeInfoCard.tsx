@@ -1,4 +1,4 @@
-import { PokemonInfo } from "../../domain/pokemon";
+import { PokemonInfo } from "../../domain/Pokemon";
 
 type PokemonInfoCardProps = {
   pokemonInfo: PokemonInfo | undefined;
