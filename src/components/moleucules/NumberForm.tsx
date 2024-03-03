@@ -11,18 +11,20 @@ export const NumberForm = (props: Props) => {
 
     const convertStringToNumber=(str:string)=>{
         const trimmedStr = str.trim();  
-        if (trimmedStr === "" || isNaN(Number(trimmedStr))) {
-          setError("数値を入力してください"); // set the error message if the input cannot be converted to a number
+        const numericPattern = /^[0-9]+$/; // regex pattern to match numeric strings
+        
+        if (trimmedStr === "" || !numericPattern.test(trimmedStr)) {
+          setError("数値を入力してください"); // set the error message if the input is not a numeric string
           return props.num;
         }
-        const num=Number(trimmedStr)
-        if (num <=0 || num >=pokemonNameMap.length){
-            setError("存在しない図鑑No.です")
+        
+        const num = Number(trimmedStr);
+        
+        if (num <= 0 || num >= pokemonNameMap.length){
+            setError("存在しない図鑑No.です");
             return props.num;
         }
-      
-        // 文字列を数値に変換して返す
-        return Number(trimmedStr);
+        return num;
     }
     
     return (
