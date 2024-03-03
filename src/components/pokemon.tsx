@@ -3,19 +3,23 @@ import { Suspense, useEffect, useState } from "react";
 import useSWR from "swr";
 import { pokemonNameMap, toCapitalize, toJapaneseName, toLowerCase} from "../data/pokemonNameMap";
 import { toJapaneseType } from "../data/pokemonTypeMap";
-import {ChangePokemonPageButton } from "./molucules/ChangePokemonPageButton";
+import { NumberForm } from "./moleucules/NumberForm";
+import { ChangePokemonPageButton } from "./moleucules/ChangePokemonPageButton";
 
 function Loading() {
   return <h2>🌀 Loading...</h2>;
 }
+
 type pokemonType={
   type1:string | null,
   type2:string | null  
 }
+
 type pokemonName={
   en:string,
   ja:string,
 }
+
 type PokemonInfo={
   name:pokemonName,
   type:pokemonType,
@@ -69,7 +73,7 @@ export const Pokemon = () => {
         onClickIncrement={()=>setCount((count)=>count+1)}
         onClickDecrement={()=>setCount((count)=>count-1)}
       />
-      
+      <NumberForm setNumber={setCount} num={count}/>
     </>
   );
 };
